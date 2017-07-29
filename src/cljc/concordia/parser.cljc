@@ -64,28 +64,9 @@
   [node]
   :unknown)
 
-(defn query->graphql [query]
+(defn query->graphql
+  "Converts an Om Next query to GraphQL."
+  [query]
   (-> query
       parser/query->ast
       ast->graphql))
-
-#_(defn run []
-    (let [ast (parser/query->ast '[:basic-node
-                                   [:basic-node :as :basic-node-aliased]
-                                   :another-basic-node
-                                   {:node-with-subnodes
-                                    [:simple-subnode
-                                     (:subnode-with-params {:p1 1 :p2 "a"})]}
-                                   {(:node-with-params-and-subnodes {:p1 "b"})
-                                    [:subnode1 :subnode2]}])]
-      (query ast)))
-
-#_(defn run2 []
-    (let [ast (parser/query->ast '[{:versions [:description :semver :systemId
-                                               {(:image {:width 10}) [:url]}]}])]
-      (query ast)))
-
-
-#_(println (query->graphql '[{:productsCatalog [:name
-                                                {(:image {:width 25}) [:url]}
-                                                :price]}]))
