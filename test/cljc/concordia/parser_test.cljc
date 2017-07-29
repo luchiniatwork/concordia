@@ -1,6 +1,6 @@
-(ns concordia.common-test
+(ns concordia.parser-test
   #? (:cljs (:require-macros [cljs.test :refer (is deftest testing)]))
-  (:require [concordia.common :as sut]
+  (:require [concordia.parser :as sut]
             #?(:clj [clojure.test :refer :all]
                :cljs [cljs.test])))
 
