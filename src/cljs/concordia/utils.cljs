@@ -14,4 +14,5 @@
                                                :headers headers}))]
               (if (= 200 (:status response))
                 (if-let [body (:body response)]
-                  (cb (:data body))))))))))
+                  (do
+                    (cb (parser/response->state query body)))))))))))

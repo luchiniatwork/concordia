@@ -1,4 +1,5 @@
 (ns concordia.core
+  (:require-macros [concordia.compile-environ :as environ])
   (:require [om.next :as om :refer-macros [defui]]
             [om.dom :as dom :include-macros true]
             [concordia.reads :as reads]
@@ -19,7 +20,8 @@
     :parser parser
     :send (utils/graphql-post "https://api.github.com/graphql"
                               {:headers {"Authorization"
-                                         "bearer 508ce13448d70ca2fae0e9cd8d02d9d1d68b3cd6"}})
+                                         (str "bearer "
+                                              (environ/env :github-auth-token))}})
     :remotes [:graphql]}))
 
 (defn render []
